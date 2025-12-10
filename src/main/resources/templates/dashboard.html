@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Customer Dashboard</title>
+</head>
+<body>
+	<h1>Welcome, <span th:text="${customer.customerName}"></span>!</h1>
+	<h3>Bank Services:</h3>
+	<ul>
+		<li><a th:href="@{/bank/deposit}">Deposit Money</a></li>
+		<li><a th:href="@{/bank/withdraw}">Withdraw Money</a></li>
+		<li><a th:href="@{/bank/transfer}">Transfer Money</a></li>
+		<li><a th:href="@{/bank/balance}">Check Balance</a></li>
+	</ul>
+</body>	
+</html>
