@@ -80,8 +80,8 @@ public class BankService {
  
     public void transfer(Long fromId, Long toId, double amount) {
  
-        BankAccount from = bankAccountRepository.findById(fromId).orElseThrow();
-        BankAccount to = bankAccountRepository.findById(toId).orElseThrow();
+        BankAccount from = bankAccountRepository.findById(fromId).orElseThrow(()-> new RuntimeException("Account not found"));
+        BankAccount to = bankAccountRepository.findById(toId).orElseThrow(()-> new RuntimeException("Account not found"));
  
         if (from.getBankAccountBalance() < amount) {
             throw new RuntimeException("Insufficient funds");
