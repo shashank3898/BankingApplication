@@ -42,7 +42,7 @@ public class BankService {
  
     public BankAccount deposit(Long accountId, double amount) {
  
-        BankAccount account = bankAccountRepository.findById(accountId).orElseThrow();
+        BankAccount account = bankAccountRepository.findById(accountId).orElseThrow(()-> new RuntimeException("Account not found"));
  
         account.setBankAccountBalance(account.getBankAccountBalance() + amount);
  
@@ -59,7 +59,7 @@ public class BankService {
  
     public BankAccount withdraw(Long accountId, double amount) {
  
-        BankAccount account = bankAccountRepository.findById(accountId).orElseThrow();
+        BankAccount account = bankAccountRepository.findById(accountId).orElseThrow(()-> new RuntimeException("Account not found"));
  
         if (amount > account.getBankAccountBalance()) {
             throw new RuntimeException("Insufficient funds");
